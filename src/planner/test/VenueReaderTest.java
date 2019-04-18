@@ -203,6 +203,17 @@ public class VenueReaderTest {
             // System.out.println(e.getMessage()); // Uncomment to check message
         }
     }
+    @Test
+    public void testIncorrectlyFormattedCorridorCapacity() throws Exception {
+        // Error found in line _: Corridor capacity not a number
+        try {
+            VenueReader.read("read_13_incorrectlyFormatted.txt");
+            Assert.fail("FormatException not thrown");
+        } catch (FormatException e) {
+            // OK
+            // System.out.println(e.getMessage()); // Uncomment to check message
+        }
+    }
 
     // -----Helper Methods-------------------------------
 

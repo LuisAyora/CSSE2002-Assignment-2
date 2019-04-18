@@ -112,7 +112,88 @@ public class VenueReader {
      */
     public static List<Venue> read(String fileName) throws IOException,
             FormatException {
-        return null; // REMOVE THIS LINE AND WRITE THIS METHOD
+        ArrayList<Venue> readVenues = new ArrayList<>();
+        FileReader fr = new FileReader(fileName);
+        BufferedReader venueReader = new BufferedReader(fr);
+        String currentLine;
+
+        while ((currentLine = venueReader.readLine()) != null) {
+            String venueName = parseVenueName(currentLine);
+            currentLine = venueReader.readLine();
+            int venueCapacity = parseVenueCapacity(currentLine);
+            Traffic venueTraffic = new Traffic();
+            while(!currentLine.equals("")) { // Parse each Traffic Corridor
+                currentLine = venueReader.readLine();
+                Corridor trafficCorridor = parseVenueTrafficCorridor(
+                  currentLine);
+                int corridorTraffic = parseCorridorTraffic(currentLine);
+                venueTraffic.updateTraffic(trafficCorridor, corridorTraffic);
+            }
+            readVenues.add(new Venue(venueName, venueCapacity, venueTraffic));
+        }
+
+        venueReader.close();
+        fr.close();
+        return readVenues; // REMOVE THIS LINE AND WRITE THIS METHOD
+    }
+
+    /**
+     *
+     * @param line
+     * @return
+     * @throws FormatException
+     */
+    private static String parseVenueName(String line) throws FormatException {
+        Scanner venueLineScanner = new Scanner(line);
+        String venueName = venueLineScanner.nextLine();
+        venueLineScanner.close();
+        return venueName;
+    }
+
+    /**
+     *
+     * @param line
+     * @return
+     * @throws FormatException
+     */
+    private static int parseVenueCapacity(String line) throws FormatException {
+        Scanner venueLineScanner = new Scanner(line);
+        int venueCapacity = venueLineScanner.nextInt();
+        venueLineScanner.close();
+        return venueCapacity;
+    }
+
+    /**
+     *
+     * @param line
+     * @return
+     * @throws FormatException
+     */
+    private static Corridor parseVenueTrafficCorridor(String line)
+            throws FormatException {
+        return null;
+    }
+
+    /**
+     * <p>
+     *   Reads a line containing Traffic Corridor and extracts the value of the
+     *   traffic associated with that corridor.
+     * </p>
+     *
+     * <p>
+     *   Line must be in the correct syntax or else it will throw a Format
+     *   Exception.
+     * </p>
+     *
+     * @param line
+     * @return
+     * @throws FormatException
+     */
+    private static int parseCorridorTraffic(String line)
+            throws FormatException {
+        Scanner venueLineScanner = new Scanner(line).useDelimiter(":");
+
+        return 0;
     }
 
 }
