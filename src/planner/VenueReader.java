@@ -8,6 +8,10 @@ import java.util.*;
  */
 public class VenueReader {
 
+    // Correct line separator for executing machine (used in toString method)
+    private final static String LINE_SEPARATOR = System.getProperty(
+      "line.separator");
+
     /**
      * <p>
      * Reads a text file called fileName that describes the venues in a
@@ -122,8 +126,7 @@ public class VenueReader {
             currentLine = venueReader.readLine();
             int venueCapacity = parseVenueCapacity(currentLine);
             Traffic venueTraffic = new Traffic();
-            while(!currentLine.equals("")) { // Parse each Traffic Corridor
-                currentLine = venueReader.readLine();
+            while(!(currentLine = venueReader.readLine()).equals("")) { // Parse each Traffic Corridor
                 Corridor trafficCorridor = parseVenueTrafficCorridor(
                   currentLine);
                 int corridorTraffic = parseCorridorTraffic(currentLine);
@@ -171,7 +174,19 @@ public class VenueReader {
      */
     private static Corridor parseVenueTrafficCorridor(String line)
             throws FormatException {
-        return null;
+        Scanner venueLineScanner = new Scanner(line).useDelimiter(",");
+
+        Location startLocation = new Location(venueLineScanner.next());
+        String endLocationString = venueLineScanner.next();
+        Location endLocation = new Location(endLocationString.replaceFirst(" ",
+          ""));
+        venueLineScanner.useDelimiter(":");
+        String capacityString = venueLineScanner.next();
+        int capacity = Integer.parseInt(capacityString.replace(", ", ""));
+
+        venueLineScanner.close();
+
+        return new Corridor(startLocation, endLocation, capacity);
     }
 
     /**
@@ -192,8 +207,10 @@ public class VenueReader {
     private static int parseCorridorTraffic(String line)
             throws FormatException {
         Scanner venueLineScanner = new Scanner(line).useDelimiter(":");
-
-        return 0;
+        venueLineScanner.next();
+        String trafficString = venueLineScanner.next();
+        venueLineScanner.close();
+        return Integer.parseInt(trafficString.replace(" ", ""));
     }
 
 }
