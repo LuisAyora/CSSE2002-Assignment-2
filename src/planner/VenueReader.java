@@ -1,6 +1,8 @@
 package planner;
 
 import java.io.*;
+import java.text.Format;
+import java.text.Normalizer;
 import java.util.*;
 
 /**
@@ -126,13 +128,24 @@ public class VenueReader {
             currentLine = venueReader.readLine();
             int venueCapacity = parseVenueCapacity(currentLine);
             Traffic venueTraffic = new Traffic();
-            while(!(currentLine = venueReader.readLine()).equals("")) { // Parse each Traffic Corridor
+
+            // Parse each Traffic Corridor
+            while(!(currentLine = venueReader.readLine()).equals("")) {
                 Corridor trafficCorridor = parseVenueTrafficCorridor(
                   currentLine);
-                int corridorTraffic = parseCorridorTraffic(currentLine);
+                int corridorTraffic = parseCorridorTraffic(currentLine, venueCapacity);
+                if (corridorTraffic > trafficCorridor.getCapacity()) {
+                    throw new FormatException();
+                }
+                if (venueTraffic.getCorridorsWithTraffic().
+                  contains(trafficCorridor)) {
+                    throw new FormatException();
+                }
                 venueTraffic.updateTraffic(trafficCorridor, corridorTraffic);
             }
-            readVenues.add(new Venue(venueName, venueCapacity, venueTraffic));
+
+            addVenueToList(readVenues, new Venue(venueName,
+              venueCapacity, venueTraffic));
         }
 
         venueReader.close();
@@ -147,10 +160,14 @@ public class VenueReader {
      * @throws FormatException
      */
     private static String parseVenueName(String line) throws FormatException {
-        Scanner venueLineScanner = new Scanner(line);
-        String venueName = venueLineScanner.nextLine();
-        venueLineScanner.close();
-        return venueName;
+        try {
+            Scanner venueLineScanner = new Scanner(line);
+            String venueName = venueLineScanner.nextLine();
+            venueLineScanner.close();
+            return venueName;
+        } catch (Exception e) {
+            throw new FormatException();
+        }
     }
 
     /**
@@ -160,10 +177,14 @@ public class VenueReader {
      * @throws FormatException
      */
     private static int parseVenueCapacity(String line) throws FormatException {
-        Scanner venueLineScanner = new Scanner(line);
-        int venueCapacity = venueLineScanner.nextInt();
-        venueLineScanner.close();
-        return venueCapacity;
+        try {
+            Scanner venueLineScanner = new Scanner(line);
+            int venueCapacity = venueLineScanner.nextInt();
+            venueLineScanner.close();
+            return venueCapacity;
+        } catch (Exception e) {
+            throw new FormatException();
+        }
     }
 
     /**
@@ -174,19 +195,30 @@ public class VenueReader {
      */
     private static Corridor parseVenueTrafficCorridor(String line)
             throws FormatException {
-        Scanner venueLineScanner = new Scanner(line).useDelimiter(",");
+        try {
+            Scanner venueLineScanner = new Scanner(line).useDelimiter(",");
 
-        Location startLocation = new Location(venueLineScanner.next());
-        String endLocationString = venueLineScanner.next();
-        Location endLocation = new Location(endLocationString.replaceFirst(" ",
-          ""));
-        venueLineScanner.useDelimiter(":");
-        String capacityString = venueLineScanner.next();
-        int capacity = Integer.parseInt(capacityString.replace(", ", ""));
+            String startLocationString = venueLineScanner.next();
+            if (startLocationString.equals("")) {
+                throw new FormatException();
+            }
+            Location startLocation = new Location(startLocationString);
+            String endLocationString = venueLineScanner.next();
+            Location endLocation = new Location(endLocationString.replaceFirst(" ",
+              ""));
+            venueLineScanner.useDelimiter(":");
+            if (endLocationString.equals(" ")) {
+                throw new FormatException();
+            }
+            String capacityString = venueLineScanner.next();
+            int capacity = Integer.parseInt(capacityString.replace(", ", ""));
 
-        venueLineScanner.close();
+            venueLineScanner.close();
 
-        return new Corridor(startLocation, endLocation, capacity);
+            return new Corridor(startLocation, endLocation, capacity);
+        } catch (Exception e) {
+            throw new FormatException();
+        }
     }
 
     /**
@@ -204,13 +236,29 @@ public class VenueReader {
      * @return
      * @throws FormatException
      */
-    private static int parseCorridorTraffic(String line)
+    private static int parseCorridorTraffic(String line, int venueCapacity)
             throws FormatException {
-        Scanner venueLineScanner = new Scanner(line).useDelimiter(":");
-        venueLineScanner.next();
-        String trafficString = venueLineScanner.next();
-        venueLineScanner.close();
-        return Integer.parseInt(trafficString.replace(" ", ""));
+        try {
+            Scanner venueLineScanner = new Scanner(line).useDelimiter(":");
+            venueLineScanner.next();
+            String trafficString = venueLineScanner.next();
+            int corridorTraffic = Integer.parseInt(trafficString.replace(" ",
+              ""));
+            if (corridorTraffic > venueCapacity) {
+                throw new FormatException();
+            }
+            venueLineScanner.close();
+            return corridorTraffic;
+        } catch (Exception e) {
+            throw new FormatException();
+        }
     }
 
+    private static void addVenueToList(List<Venue> venueList, Venue venue)
+      throws FormatException {
+        if (venueList.contains(venue)) {
+            throw new FormatException();
+        }
+        venueList.add(venue);
+    }
 }

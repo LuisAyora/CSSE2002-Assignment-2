@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8d10e479-3677-4a01-a2c1-29f6628d10d0" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/planner/VenueReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/planner/VenueReader.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -15,22 +16,25 @@
     <session id="-1718202196">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.14" value="1" />
+          <entry key="project.open.time.16" value="1" />
           <entry key="project.open.time.3" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.opened" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="42" />
-          <entry key="PLAIN_TEXT" value="33" />
+          <entry key="CLASS" value="4" />
+          <entry key="JAVA" value="49" />
+          <entry key="PLAIN_TEXT" value="42" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="3481" />
+          <entry key="JAVA" value="4254" />
+          <entry key="PLAIN_TEXT" value="9" />
         </counts>
       </usages-collector>
     </session>
@@ -40,8 +44,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/planner/VenueReader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-444">
-              <caret line="184" column="74" lean-forward="true" selection-start-line="184" selection-start-column="74" selection-end-line="184" selection-end-column="74" />
+            <state relative-caret-position="-2514">
+              <caret line="125" column="64" lean-forward="true" selection-start-line="125" selection-start-column="64" selection-end-line="125" selection-end-column="64" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -52,8 +56,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/planner/test/VenueReaderTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="143">
-              <caret line="52" selection-start-line="52" selection-end-line="52" />
+            <state relative-caret-position="230">
+              <caret line="180" column="64" selection-start-line="180" selection-start-column="64" selection-end-line="180" selection-end-column="64" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -78,6 +82,7 @@
       <list>
         <option value="$PROJECT_DIR$/src/planner/test/VenueReaderTest.java" />
         <option value="$PROJECT_DIR$/src/planner/TestMain.java" />
+        <option value="$PROJECT_DIR$/read_13_incorrectlyFormatted.txt" />
         <option value="$PROJECT_DIR$/src/planner/VenueReader.java" />
       </list>
     </option>
@@ -112,13 +117,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="planner" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="CSSE2002-Assignment-2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CSSE2002-Assignment-2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="planner" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -130,7 +128,7 @@
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555562938877" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555647879078" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -144,7 +142,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.VenueReaderTest">
+  <component name="RunManager" selected="JUnit.VenueReaderTest.testIncorrectlyFormattedCorridorCapacity">
     <configuration name="TestMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="planner.TestMain" />
       <module name="CSSE2002-Assignment-2" />
@@ -172,13 +170,67 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="VenueReaderTest.testIncorrectlyFormattedCorridor" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CSSE2002-Assignment-2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="planner.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="planner.test" />
+      <option name="MAIN_CLASS_NAME" value="planner.test.VenueReaderTest" />
+      <option name="METHOD_NAME" value="testIncorrectlyFormattedCorridor" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VenueReaderTest.testIncorrectlyFormattedCorridorCapacity" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CSSE2002-Assignment-2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="planner.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="planner.test" />
+      <option name="MAIN_CLASS_NAME" value="planner.test.VenueReaderTest" />
+      <option name="METHOD_NAME" value="testIncorrectlyFormattedCorridorCapacity" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VenueReaderTest.testIncorrectlyFormattedCorridorTraffic" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CSSE2002-Assignment-2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="planner.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="planner.test" />
+      <option name="MAIN_CLASS_NAME" value="planner.test.VenueReaderTest" />
+      <option name="METHOD_NAME" value="testIncorrectlyFormattedCorridorTraffic" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="JUnit.VenueReaderTest" />
       <item itemvalue="Application.TestMain" />
+      <item itemvalue="JUnit.VenueReaderTest.testIncorrectlyFormattedCorridor" />
+      <item itemvalue="JUnit.VenueReaderTest.testIncorrectlyFormattedCorridorTraffic" />
+      <item itemvalue="JUnit.VenueReaderTest.testIncorrectlyFormattedCorridorCapacity" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.VenueReaderTest.testIncorrectlyFormattedCorridorCapacity" />
         <item itemvalue="JUnit.VenueReaderTest" />
+        <item itemvalue="JUnit.VenueReaderTest.testIncorrectlyFormattedCorridor" />
+        <item itemvalue="JUnit.VenueReaderTest.testIncorrectlyFormattedCorridorTraffic" />
         <item itemvalue="Application.TestMain" />
       </list>
     </recent_temporary>
@@ -197,27 +249,42 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="VenueReaderTest - 2019.04.17 at 13h 07m 08s.xml">
+    <history-entry file="VenueReaderTest - 2019.04.19 at 00h 09m 13s.xml">
       <configuration name="VenueReaderTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="VenueReaderTest - 2019.04.17 at 15h 00m 37s.xml">
+    <history-entry file="VenueReaderTest_testIncorrectlyFormattedCorridor - 2019.04.19 at 00h 10m 40s.xml">
+      <configuration name="VenueReaderTest.testIncorrectlyFormattedCorridor" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="VenueReaderTest_testIncorrectlyFormattedCorridor - 2019.04.19 at 00h 12m 08s.xml">
+      <configuration name="VenueReaderTest.testIncorrectlyFormattedCorridor" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="VenueReaderTest - 2019.04.19 at 00h 14m 25s.xml">
       <configuration name="VenueReaderTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="VenueReaderTest - 2019.04.18 at 00h 42m 22s.xml">
+    <history-entry file="VenueReaderTest - 2019.04.19 at 00h 15m 37s.xml">
       <configuration name="VenueReaderTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="VenueReaderTest - 2019.04.18 at 00h 46m 30s.xml">
+    <history-entry file="VenueReaderTest - 2019.04.19 at 00h 20m 55s.xml">
       <configuration name="VenueReaderTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="VenueReaderTest - 2019.04.18 at 00h 48m 15s.xml">
+    <history-entry file="VenueReaderTest - 2019.04.19 at 00h 22m 15s.xml">
       <configuration name="VenueReaderTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="VenueReaderTest_testIncorrectlyFormattedCorridorCapacity - 2019.04.19 at 00h 22m 54s.xml">
+      <configuration name="VenueReaderTest.testIncorrectlyFormattedCorridorCapacity" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="VenueReaderTest_testIncorrectlyFormattedCorridorCapacity - 2019.04.19 at 00h 23m 40s.xml">
+      <configuration name="VenueReaderTest.testIncorrectlyFormattedCorridorCapacity" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="VenueReaderTest_testIncorrectlyFormattedCorridorCapacity - 2019.04.19 at 00h 23m 55s.xml">
+      <configuration name="VenueReaderTest.testIncorrectlyFormattedCorridorCapacity" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1381" height="885" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19425549" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19727892" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -227,7 +294,7 @@
       <window_info anchor="bottom" id="Messages" order="0" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.32972974" />
+      <window_info anchor="bottom" id="Run" order="3" visible="true" weight="0.32972974" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -248,6 +315,18 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/planner/test/VenueReaderTest.java</url>
+          <line>209</line>
+          <properties />
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/planner/Event.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -259,40 +338,13 @@
     <entry file="file://$PROJECT_DIR$/read_10_incorrectlyFormatted.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/read_11_incorrectlyFormatted.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/read_07_incorrectlyFormatted.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/read_04_incorrectlyFormatted.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="4" column="23" lean-forward="true" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/read_06_incorrectlyFormatted.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/read_08_incorrectlyFormatted.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/read_09_incorrectlyFormatted.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/read_12_incorrectlyFormatted.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/planner/test/AllocatorTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="223">
           <caret line="16" column="22" lean-forward="true" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#360#361#0" expanded="true" />
-            <element signature="e#389#390#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -306,30 +358,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/planner/FormatException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/read_03_correctlyFormatted_manyVenues.txt">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/planner/Venue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="74" selection-start-line="74" selection-end-line="74" />
-          <folding>
-            <element signature="e#3415#3416#0" expanded="true" />
-            <element signature="e#3442#3443#0" expanded="true" />
-            <element signature="e#3581#3582#0" expanded="true" />
-            <element signature="e#3612#3613#0" expanded="true" />
-            <element signature="e#4092#4093#0" expanded="true" />
-            <element signature="e#4142#4143#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/util/Scanner.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -342,26 +372,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/read_05_incorrectlyFormatted.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/read_02_correctlyFormatted_oneVenue.txt">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/planner/Corridor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="64" selection-start-line="64" selection-end-line="64" />
-          <folding>
-            <element signature="e#2472#2473#0" expanded="true" />
-            <element signature="e#2500#2501#0" expanded="true" />
-            <element signature="e#2646#2647#0" expanded="true" />
-            <element signature="e#2672#2673#0" expanded="true" />
-            <element signature="e#2850#2851#0" expanded="true" />
-            <element signature="e#2881#2882#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/planner/Location.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -378,10 +390,57 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/planner/TestMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/read_04_incorrectlyFormatted.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="4" column="23" lean-forward="true" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/read_05_incorrectlyFormatted.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/planner/Corridor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="90" selection-start-line="90" selection-end-line="90" />
+          <folding>
+            <element signature="e#2472#2473#0" expanded="true" />
+            <element signature="e#2500#2501#0" expanded="true" />
+            <element signature="e#2646#2647#0" expanded="true" />
+            <element signature="e#2672#2673#0" expanded="true" />
+            <element signature="e#2881#2882#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/planner/FormatException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+          <folding>
+            <element signature="e#267#268#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/read_06_incorrectlyFormatted.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/read_07_incorrectlyFormatted.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/planner/Traffic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1876">
-          <caret line="194" selection-start-line="194" selection-end-line="194" />
+        <state relative-caret-position="149">
+          <caret line="263" selection-start-line="263" selection-end-line="263" />
           <folding>
             <element signature="e#1284#1285#0" expanded="true" />
             <element signature="e#1328#1329#0" expanded="true" />
@@ -393,20 +452,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/planner/TestMain.java">
+    <entry file="file://$PROJECT_DIR$/src/planner/Venue.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        <state relative-caret-position="126">
+          <caret line="185" selection-start-line="185" selection-end-line="185" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#3415#3416#0" expanded="true" />
+            <element signature="e#3442#3443#0" expanded="true" />
+            <element signature="e#3581#3582#0" expanded="true" />
+            <element signature="e#3612#3613#0" expanded="true" />
+            <element signature="e#4092#4093#0" expanded="true" />
+            <element signature="e#4142#4143#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/Assert.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="37" selection-start-line="37" selection-end-line="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/runners/ParentRunner.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="203" selection-start-line="203" selection-end-line="203" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/read_08_incorrectlyFormatted.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/read_11_incorrectlyFormatted.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/read_12_incorrectlyFormatted.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/read_13_incorrectlyFormatted.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/planner/test/VenueReaderTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="52" selection-start-line="52" selection-end-line="52" />
+        <state relative-caret-position="230">
+          <caret line="180" column="64" selection-start-line="180" selection-start-column="64" selection-end-line="180" selection-end-column="64" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -415,8 +516,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/planner/VenueReader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-444">
-          <caret line="184" column="74" lean-forward="true" selection-start-line="184" selection-start-column="74" selection-end-line="184" selection-end-column="74" />
+        <state relative-caret-position="-2514">
+          <caret line="125" column="64" lean-forward="true" selection-start-line="125" selection-start-column="64" selection-end-line="125" selection-end-column="64" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
