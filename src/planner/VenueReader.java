@@ -1,18 +1,12 @@
 package planner;
 
 import java.io.*;
-import java.text.Format;
-import java.text.Normalizer;
 import java.util.*;
 
 /**
  * Provides a method to read in a list of venues from a text file.
  */
 public class VenueReader {
-
-    // Correct line separator for executing machine (used in toString method)
-    private final static String LINE_SEPARATOR = System.getProperty(
-      "line.separator");
 
     /**
      * <p>
@@ -122,48 +116,56 @@ public class VenueReader {
         FileReader fr = new FileReader(fileName);
         BufferedReader venueReader = new BufferedReader(fr);
         String currentLine;
-
+        // Parse name, capacity and traffic corridors
         while ((currentLine = venueReader.readLine()) != null) {
             String venueName = parseVenueName(currentLine);
             currentLine = venueReader.readLine();
             int venueCapacity = parseVenueCapacity(currentLine);
             Traffic venueTraffic = new Traffic();
-
             // Parse each Traffic Corridor
             while(!(currentLine = venueReader.readLine()).equals("")) {
                 Corridor trafficCorridor = parseVenueTrafficCorridor(
                   currentLine);
-                int corridorTraffic = parseCorridorTraffic(currentLine, venueCapacity);
-                if (corridorTraffic > trafficCorridor.getCapacity()) {
-                    throw new FormatException();
-                }
+                int corridorTraffic = parseCorridorTraffic(currentLine,
+                  venueCapacity, trafficCorridor);
                 if (venueTraffic.getCorridorsWithTraffic().
                   contains(trafficCorridor)) {
                     throw new FormatException();
                 }
                 venueTraffic.updateTraffic(trafficCorridor, corridorTraffic);
-            }
-
+            } // Now add the venue to the list
             addVenueToList(readVenues, new Venue(venueName,
               venueCapacity, venueTraffic));
         }
-
         venueReader.close();
         fr.close();
-        return readVenues; // REMOVE THIS LINE AND WRITE THIS METHOD
+        return readVenues;
     }
 
     /**
+     * <p>
+     *   Reads the name of a venue on a line of the read document.
+     * </p>
+     *
+     * <p>
+     *   Will throw an error when the line cannot be read correctly or when
+     *   the venue name is an empty string.
+     * </p>
      *
      * @param line
-     * @return
+     *        the line to extract the name from.
+     * @return the venue name as a string.
      * @throws FormatException
+     *         when there is a problem reading the line of the file or when
+     *         the venue name is an empty string.
      */
-    private static String parseVenueName(String line) throws FormatException {
-        try {
-            Scanner venueLineScanner = new Scanner(line);
+    private static String parseVenueName(String line)
+      throws FormatException {
+        try (Scanner venueLineScanner = new Scanner(line)) {
             String venueName = venueLineScanner.nextLine();
-            venueLineScanner.close();
+            if (venueName.equals(" ")) {
+                throw new FormatException();
+            }
             return venueName;
         } catch (Exception e) {
             throw new FormatException();
@@ -171,50 +173,69 @@ public class VenueReader {
     }
 
     /**
+     * <p>
+     *   Reads the venue capacity from a line of the read file.
+     * </p>
+     *
+     * <p>
+     *   Fails when the line cannot be parsed as an integer.
+     * </p>
      *
      * @param line
-     * @return
+     *        the line to extract the capacity from.
+     * @return the venue's capacity as an integer.
      * @throws FormatException
+     *         when the line cannot be read as an integer.
      */
     private static int parseVenueCapacity(String line) throws FormatException {
-        try {
-            Scanner venueLineScanner = new Scanner(line);
-            int venueCapacity = venueLineScanner.nextInt();
-            venueLineScanner.close();
-            return venueCapacity;
+        try (Scanner venueLineScanner = new Scanner(line)) {
+            return venueLineScanner.nextInt();
         } catch (Exception e) {
             throw new FormatException();
         }
     }
 
     /**
+     * <p>
+     *   Parses a traffic Corridor file from a line of text on the read file.
+     * </p>
+     *
+     * <p>
+     *   Each line contains the start and end locations of the corridors and
+     *   the capacity of the corridor. This method does not handle the traffic
+     *   value associated with the corridor.
+     * </p>
+     *
+     * <p>
+     *   This method throws an exception when the line cannot be parsed
+     *   properly or if the location names of the corridor are empty
+     *   strings.
+     * </p>
      *
      * @param line
-     * @return
+     *        the line to generate the Corridor from
+     * @return a traffic Corridor parsed from the line
      * @throws FormatException
+     *         if the names of the start or end Locations are empty strings
+     *         or if the line cannot be parsed properly.
      */
     private static Corridor parseVenueTrafficCorridor(String line)
             throws FormatException {
-        try {
-            Scanner venueLineScanner = new Scanner(line).useDelimiter(",");
-
-            String startLocationString = venueLineScanner.next();
-            if (startLocationString.equals("")) {
+        try (Scanner venueLineScanner = new Scanner(line).useDelimiter(",")) {
+            String locationString = venueLineScanner.next();
+            if (locationString.equals(" ")) {
                 throw new FormatException();
             }
-            Location startLocation = new Location(startLocationString);
-            String endLocationString = venueLineScanner.next();
-            Location endLocation = new Location(endLocationString.replaceFirst(" ",
+            Location startLocation = new Location(locationString);
+            locationString = venueLineScanner.next();
+            Location endLocation = new Location(locationString.replaceFirst(" ",
               ""));
-            venueLineScanner.useDelimiter(":");
-            if (endLocationString.equals(" ")) {
+            if (locationString.equals(" ")) {
                 throw new FormatException();
-            }
-            String capacityString = venueLineScanner.next();
-            int capacity = Integer.parseInt(capacityString.replace(", ", ""));
-
-            venueLineScanner.close();
-
+            } // Now parse the Corridor capacity
+            venueLineScanner.useDelimiter(":");
+            String capacityString = venueLineScanner.next().replace(", ", "");
+            int capacity = Integer.parseInt(capacityString);
             return new Corridor(startLocation, endLocation, capacity);
         } catch (Exception e) {
             throw new FormatException();
@@ -232,28 +253,63 @@ public class VenueReader {
      *   Exception.
      * </p>
      *
+     * <p>
+     *   This method implements error checking to ensure that the traffic value
+     *   is not larger than the venue's capacity or the capacity of its
+     *   associated traffic corridor.
+     * </p>
+     *
+     * <p>
+     *   This method fails if the value cannot be read as a number or if the
+     *   traffic value is larger than the capacity of the venue or the traffic
+     *   corridor.
+     * </p>
+     *
      * @param line
-     * @return
+     *        the line to extract the traffic value from.
+     * @param venueCapacity
+     *        the venue's capacity to ensure the traffic value is valid.
+     * @param corridor
+     *        the corridor to ensure traffic is safe.
+     * @return the traffic value of a corridor as an integer.
      * @throws FormatException
+     *         if the value cannot be parsed as an integer or if the value
+     *         is larger than the capacities of either the venue or the
+     *         traffic corridor.
      */
-    private static int parseCorridorTraffic(String line, int venueCapacity)
-            throws FormatException {
-        try {
-            Scanner venueLineScanner = new Scanner(line).useDelimiter(":");
-            venueLineScanner.next();
-            String trafficString = venueLineScanner.next();
-            int corridorTraffic = Integer.parseInt(trafficString.replace(" ",
-              ""));
-            if (corridorTraffic > venueCapacity) {
+    private static int parseCorridorTraffic(String line, int venueCapacity,
+      Corridor corridor) throws FormatException {
+        try (Scanner venueLineScanner = new Scanner(line).useDelimiter(":");) {
+            venueLineScanner.next(); // Skip the corridor data
+            String trafficString = venueLineScanner.next().replace(" ", "");
+            int corridorTraffic = Integer.parseInt(trafficString);
+            if (corridorTraffic > venueCapacity ||
+              corridorTraffic > corridor.getCapacity()) {
                 throw new FormatException();
             }
-            venueLineScanner.close();
             return corridorTraffic;
         } catch (Exception e) {
             throw new FormatException();
         }
     }
 
+    /**
+     * <p>
+     *   Adds a venue to the read venues list if the venue was not added
+     *   previously.
+     * </p>
+     *
+     * <p>
+     *   The method fails if the venue already exists on the list.
+     * </p>
+     *
+     * @param venueList
+     *        the read venues list.
+     * @param venue
+     *        the venue to add to the list.
+     * @throws FormatException
+     *         if the venue already exists on the list.
+     */
     private static void addVenueToList(List<Venue> venueList, Venue venue)
       throws FormatException {
         if (venueList.contains(venue)) {
