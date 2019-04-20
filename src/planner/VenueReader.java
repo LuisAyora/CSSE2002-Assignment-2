@@ -115,27 +115,32 @@ public class VenueReader {
         ArrayList<Venue> readVenues = new ArrayList<>();
         FileReader fr = new FileReader(fileName);
         BufferedReader venueReader = new BufferedReader(fr);
-        String currentLine;
+        String currentLine = venueReader.readLine();
         // Parse name, capacity and traffic corridors
-        while ((currentLine = venueReader.readLine()) != null) {
+        while (currentLine != null) {
             String venueName = parseVenueName(currentLine);
             currentLine = venueReader.readLine();
             int venueCapacity = parseVenueCapacity(currentLine);
             Traffic venueTraffic = new Traffic();
+            currentLine = venueReader.readLine();
             // Parse each Traffic Corridor
-            while(!(currentLine = venueReader.readLine()).equals("")) {
+            while(!currentLine.equals("")) {
                 Corridor trafficCorridor = parseVenueTrafficCorridor(
                   currentLine);
                 int corridorTraffic = parseCorridorTraffic(currentLine,
                   venueCapacity, trafficCorridor);
-                if (venueTraffic.getCorridorsWithTraffic().
-                  contains(trafficCorridor)) {
+                if (venueTraffic.getCorridorsWithTraffic()
+                  .contains(trafficCorridor)) {
                     throw new FormatException();
                 }
                 venueTraffic.updateTraffic(trafficCorridor, corridorTraffic);
+                if ((currentLine = venueReader.readLine()) == null) {
+                    throw new FormatException();
+                }
             } // Now add the venue to the list
             addVenueToList(readVenues, new Venue(venueName,
               venueCapacity, venueTraffic));
+            currentLine = venueReader.readLine();
         }
         venueReader.close();
         fr.close();
